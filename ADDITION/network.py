@@ -156,6 +156,8 @@ class DigitSamplerNet(tf.keras.Model):
             return self.advanced_indecater_grads(x, y, loss_fn)
         elif self.grad_type == 'advanced_icr2':
             return self.advanced_indecater_grads2(x, y, loss_fn)
+        else:
+            raise ValueError(f"Unknown gradient method {self.grad_type}")
 
     def train(self, data, epochs, val_data=None, log_its=100, loss_fn=prob_loss):
         counter = 1
