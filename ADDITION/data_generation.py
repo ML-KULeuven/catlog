@@ -1,3 +1,4 @@
+import os
 import pickle
 import tensorflow as tf
 
@@ -85,6 +86,9 @@ def create_sum_loader(N, BATCH_SIZE=10):
     # test_dataset = tf.data.Dataset.from_tensor_slices((x_test[VAL_BUF // N:], y_test[VAL_BUF // N:])).shuffle(10000 // N).batch(BATCH_SIZE)
     test_dataset = tf.data.Dataset.from_tensor_slices((x_test, y_test)).shuffle(safe_test // N).batch(BATCH_SIZE)
 
+    if not os.path.exists('ADDITION/data'):
+        os.makedirs('ADDITION/data')
+
     pickle.dump([x_train, y_train], open(f'ADDITION/data/data_{N}_train_batch{BATCH_SIZE}.pkl', 'wb'))
     pickle.dump([x_test, y_test], open(f'ADDITION/data/data_{N}_test_batch{BATCH_SIZE}.pkl', 'wb'))
 
@@ -115,6 +119,9 @@ def create_two_number_sum_loader(N, BATCH_SIZE=10):
     val_dataset = tf.data.Dataset.from_tensor_slices((x_test1[:VAL_BUF], x_test2[:VAL_BUF], y_test[:VAL_BUF])).shuffle(VAL_BUF).batch(BATCH_SIZE)
     test_dataset = tf.data.Dataset.from_tensor_slices((x_test1[VAL_BUF:], x_test2[VAL_BUF:], y_test[VAL_BUF:])).shuffle(TEST_BUF).batch(BATCH_SIZE)
 
+    if not os.path.exists('ADDITION/data'):
+        os.makedirs('ADDITION/data')
+        
     pickle.dump([x_train, y_train], open(f'ADDITION/data/data_{N}_train_batch{BATCH_SIZE}.pkl', 'wb'))
     pickle.dump([x_test, y_test], open(f'ADDITION/data/data_{N}_test_batch{BATCH_SIZE}.pkl', 'wb'))
 

@@ -1,0 +1,6 @@
+ADDITION/__pycache__/data_generation.cpython-38.pyc
+ADDITION/__pycache__/evaluate.cpython-38.pyc
+ADDITION/__pycache__/losses.cpython-38.pyc
+ADDITION/__pycache__/network.cpython-38.pyc
+ADDITION/data/data_16_test_batch10.pkl
+ADDITION/data/data_16_train_batch10.pkl
